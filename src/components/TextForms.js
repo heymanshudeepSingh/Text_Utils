@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 export default function TextForms(props) {
-  const [text, SetText] = useState('Enter Text Here.');
+  const [text, SetText] = useState('');
 
   const handleOnChange = (event) => {
     SetText(event.target.value);
