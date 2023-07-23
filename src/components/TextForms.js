@@ -17,7 +17,18 @@ export default function TextForms(props) {
     let newTxt = text.toLowerCase();
     SetText(newTxt);
   };
+  const resetBox = () => {
+    SetText('');
+    document.getElementById("MyBox").style.color = "Black";
+  };
 
+  const handleColorChanger = () => {
+    let colors = { 1: 'Red', 2: 'Blue', 3: 'Green', 4: 'orange', 5: 'Yellow' };
+    let boxText = document.getElementById('MyBox');
+    boxText.style.color = colors[Math.floor(Math.random() * 5)];
+    console.log('changed color');
+    console.log(Math.floor(Math.random() * 5));
+  };
   return (
     <>
       <div className='container'>
@@ -39,7 +50,15 @@ export default function TextForms(props) {
         <button className='btn btn-success mx-2' onClick={handleBtn1}>
           {props.btn1}
         </button>
-        <button className="btn btn-success mx-2" onClick={handleBtn2}>Convert to lower case</button>
+        <button className='btn btn-success mx-2' onClick={handleBtn2}>
+          Convert to lower case
+        </button>
+        <button className='btn btn-success mx-2' onClick={handleColorChanger}>
+          Change Color
+        </button>
+        <button className='btn btn-success mx-2' onClick={resetBox}>
+          Reset
+        </button>
       </div>
       <div className='container my-3'>
         <h1>Summary</h1>
