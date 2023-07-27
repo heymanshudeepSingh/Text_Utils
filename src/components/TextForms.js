@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function TextForms(props) {
   const [text, SetText] = useState('');
-  if (props.mode === 'light') {
-    document.body.style.backgroundColor = 'white';
-  } else {
-    document.body.style.backgroundColor = '#303740';
-  }
+ 
   const handleOnChange = (event) => {
     SetText(event.target.value);
   };

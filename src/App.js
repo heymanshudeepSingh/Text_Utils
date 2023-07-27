@@ -2,6 +2,8 @@ import './App.css';
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import TextForms from './components/TextForms';
+import About from './components/About';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [mode, setMode] = useState('dark');
@@ -14,17 +16,37 @@ function App() {
       document.body.style.backgroundColor = 'white';
     }
   };
+
+  window.addEventListener('load', (event) => {
+    if (mode === 'light') {
+      document.body.style.backgroundColor = 'white';
+    } else {
+      document.body.style.backgroundColor = '#303740';
+    }
+  });
   return (
-    <>
-      <Navbar title='TextUtils' mode={mode} toggle={toggleMode} />
-      <div className='container'>
-        <TextForms
-          heading='Enter Text:'
-          btn1='Convert to uppercase'
-          mode={mode}
-        />
-      </div>
-    </>
+    <Router>
+      <>
+        <Navbar title='TextUtils' mode={mode} toggle={toggleMode} />
+        <div className='container'>
+          <Routes>
+            <Route
+              exact path='/'
+              element={
+                <TextForms
+                  heading='Enter Text:'
+                  btn1='Convert to uppercase'
+                  mode={mode}
+                />
+              }
+            />
+            <Route 
+            exact path='/about' 
+            element={<About />} />
+          </Routes>
+        </div>
+      </>
+    </Router>
   );
 }
 
